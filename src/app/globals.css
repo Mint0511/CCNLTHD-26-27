@@ -1,0 +1,79 @@
+:root{
+    --bg: white; /*màu nền*/
+    --textColor: black; /*màu chữ*/
+    --softBg: #f0f0f0; /*màu nền phụ*/
+    --softTextColor: #626262; /*màu chữ phụ*/
+}
+
+/* Reset CSS cho toàn bộ trang */
+*{
+    padding: 0; /*loại bỏ khoảng cách mặc định của trình duyệt*/
+    margin: 0; /*loại bỏ khoảng cách mặc định của trình duyệt*/
+    box-sizing: border-box; /*bao gồm padding và border trong kích thước của phần tử*/
+}
+
+/* Style cho thẻ body (toàn bộ trang) */
+body{
+    max-width: 100vw; /*giới hạn chiều rộng của trang web*/
+    overflow-x: hidden; /*ẩn thanh cuộn ngang nếu có*/
+}
+
+/* Style cho thẻ a (liên kết) */
+a{
+    color: inherit; /*kế thừa màu sắc từ phần tử cha*/
+    text-decoration: none; /*loại bỏ gạch chân mặc định của liên kết*/
+}
+
+/* Container chính bao ngoài toàn bộ nội dung */
+.container{
+    min-height: 100vh; /*đảm bảo container chiếm ít nhất chiều cao của cửa sổ*/
+    background-color: var(--bg); /*sử dụng màu nền từ biến CSS*/
+    color: var(--textColor); /*sử dụng màu chữ từ biến CSS*/
+}
+
+/* Wrapper: khung chứa nội dung, căn giữa và giới hạn chiều rộng */
+.wrapper{
+    max-width: 1536px; /*giới hạn chiều rộng của nội dung*/
+    margin-left: auto; /*căn giữa nội dung theo chiều ngang*/
+    margin-right: auto; /*căn giữa nội dung theo chiều ngang*/
+    padding-left: 80px; /*khoảng cách bên trái của nội dung*/
+    padding-right: 80px; /*khoảng cách bên phải của nội dung*/
+}
+
+/* Responsive: điều chỉnh wrapper cho các kích thước màn hình khác nhau */
+@media screen and (max-width: 1536px){   
+  
+    .wrapper{
+        max-width: 1366px; /*giới hạn chiều rộng của nội dung khi màn hình nhỏ hơn 1536px*/
+    }
+}
+
+@media screen and (max-width: 1280px){   
+  
+    .wrapper{
+        max-width: 1024px; /*giới hạn chiều rộng của nội dung khi màn hình nhỏ hơn 1280px*/
+    }
+}
+
+@media screen and (max-width: 1024px){   
+  
+    .wrapper{
+        max-width: 768px; /*giới hạn chiều rộng của nội dung khi màn hình nhỏ hơn 1024px*/
+        padding-left: 40px; /*khoảng cách bên trái của nội dung*/
+        padding-right: 40px; /*khoảng cách bên phải của nội dung*/
+    }
+}
+
+@media screen and (max-width: 768px){   
+  
+    .wrapper{
+        max-width: 640px; /*giới hạn chiều rộng của nội dung khi màn hình nhỏ hơn 768px*/
+    }
+}
+
+@media screen and (max-width: 640px){   
+  
+    .wrapper{
+        max-width: 475px; /*giới hạn chiều rộng của nội dung khi màn hình nhỏ hơn 640px*/
+    }
+}
