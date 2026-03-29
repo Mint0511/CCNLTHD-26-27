@@ -1,2 +1,28 @@
+/* Các phần tử con của container */
 .container{
+    display: flex; /*sử dụng flexbox để bố trí các phần tử con theo hàng ngang*/
+    align-items: center; /*căn giữa các phần tử con theo chiều dọc*/
+    justify-content: space-between; /*phân phối không gian giữa các phần tử con*/
+    height: 100px; /*chiều cao của navbar*/
+}
+
+/* Phần tử con social */
+.social{
+    display: flex; /*sử dụng flexbox để bố trí các phần tử con theo hàng ngang*/
+    gap: 10px; /*khoảng cách giữa các phần tử con*/
+    flex: 1; /*cho phép phần tử social chiếm không gian còn lại trong container*/
+}
+
+.logo{
+    flex: 1; /*cho phép phần tử logo chiếm không gian còn lại trong container*/
+    text-align: center; /*căn giữa nội dung của phần tử logo theo chiều ngang*/
+    font-size: 36px; /*kích thước chữ của logo*/
+    font-weight: bold; /*độ đậm của chữ logo*/
+}
+
+.links{
+    display: flex; /*sử dụng flexbox để bố trí các phần tử con theo hàng ngang*/
+    gap: 20px; /*khoảng cách giữa các phần tử con*/
+    flex: 1; /*cho phép phần tử links chiếm không gian còn lại trong container*/
+    font-size: 20px; /*kích thước chữ của các liên kết*/
 }
