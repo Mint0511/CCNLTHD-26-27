@@ -22,7 +22,44 @@
 
 .links{
     display: flex; /*sử dụng flexbox để bố trí các phần tử con theo hàng ngang*/
+    align-items: center;
     gap: 20px; /*khoảng cách giữa các phần tử con*/
     flex: 1; /*cho phép phần tử links chiếm không gian còn lại trong container*/
     font-size: 20px; /*kích thước chữ của các liên kết*/
+}
+
+@media screen and (max-width: 1280px){
+    .logo {
+        font-size: 32px; /*kích thước chữ của logo khi màn hình nhỏ hơn hoặc bằng 1280px*/
+    }
+    
+    .links {
+        font-size: 18px; /*kích thước chữ của các liên kết khi màn hình nhỏ hơn hoặc bằng 1280px*/
+        gap: 15px; /*khoảng cách giữa các phần tử con khi màn hình nhỏ hơn hoặc bằng 1280px*/
+    }
+}
+
+@media screen and (max-width: 1024px){
+    .social {
+        display: none; /*ẩn phần tử social khi màn hình nhỏ hơn hoặc bằng 1024px*/
+    }
+
+    .logo {
+        text-align: left; /*căn trái nội dung của phần tử logo khi màn hình nhỏ hơn hoặc bằng 1024px*/ 
+    }
+}
+
+@media screen  and (max-width: 768px){
+    .logo {
+        font-size: 24px; /*kích thước chữ của logo khi màn hình nhỏ hơn hoặc bằng 768px*/
+    }
+}
+
+@media screen and (max-width: 640px){
+    .links{
+        justify-content: flex-end; /*căn phải các phần tử con trong phần tử links khi màn hình nhỏ hơn hoặc bằng 640px*/
+    }
+    .link {
+        display: none; /*ẩn phần tử link khi màn hình nhỏ hơn hoặc bằng 640px*/
+    }
 }

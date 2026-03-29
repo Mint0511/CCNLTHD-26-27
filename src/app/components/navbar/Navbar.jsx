@@ -16,9 +16,9 @@ const Navbar = () => {
       <div className={styles.logo}>Nhom6Blog</div>
       <div className={styles.links}>
         <ThemeToggle />
-        <a href="/">Home</a>
-        <a href="/">Contact</a>
-        <a href="/">About</a>
+        <a href="/" className={styles.link}>Home</a>
+        <a href="/" className={styles.link}>Contact</a>
+        <a href="/" className={styles.link}>About</a>
         <AuthLinks />
       </div>
 

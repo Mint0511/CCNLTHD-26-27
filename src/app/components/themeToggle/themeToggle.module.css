@@ -7,7 +7,6 @@
     display: flex; /*Sử dụng flexbox để căn giữa nội dung bên trong container*/
     align-items: center; /*Căn giữa theo chiều dọc*/
     justify-content: space-between; /*Căn đều khoảng cách giữa các phần tử con*/
-    background-color: black; /*Màu nền của container*/
     position: relative; /*Đặt vị trí tương đối để có thể sử dụng vị trí tuyệt đối cho bóng chuyển đổi*/
 }
 
@@ -15,7 +14,5 @@
     width: 15px; /*Chỉnh kích thước của bóng chuyển đổi*/
     height: 15px; /*Chỉnh độ cao của bóng chuyển đổi*/
     border-radius: 50%; /*Tạo hình tròn cho bóng chuyển đổi*/
-    background-color: white; /*Màu nền của bóng chuyển đổi*/
     position: absolute; /*Đặt vị trí tuyệt đối để dễ dàng di chuyển bóng chuyển đổi*/
-    left: 1px; /*Vị trí ban đầu của bóng chuyển đổi ở bên trái*/
 }

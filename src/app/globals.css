@@ -24,6 +24,20 @@ a{
     text-decoration: none; /*loại bỏ gạch chân mặc định của liên kết*/
 }
 
+.dark{
+    --bg:#0f172a;
+    --textColor:#ddd;
+    --softBg:#1f273a;
+    --softTextColor:#a6a6a6
+}
+
+.light{
+      --bg: white; 
+    --textColor: black; 
+    --softBg: #f0f0f0; 
+    --softTextColor: #626262; 
+}
+
 /* Container chính bao ngoài toàn bộ nội dung */
 .container{
     min-height: 100vh; /*đảm bảo container chiếm ít nhất chiều cao của cửa sổ*/
