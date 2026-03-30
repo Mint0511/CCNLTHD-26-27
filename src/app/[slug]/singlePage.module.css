@@ -1,0 +1,79 @@
+.container{
+
+}
+
+/* infoContainer là phần chứa text và image*/
+.infoContainer{
+    display: flex;
+    align-items: center; /* căn giữa theo chiều dọc */
+    gap: 50px;
+}
+
+/* textContainer là phần chứa text*/
+.textContainer{
+    flex:1;
+}
+
+.title{
+    font-size: 64px;
+    margin-bottom: 50px;
+}
+
+/* user là phần chứa thông tin người dùng, bao gồm ảnh đại diện và tên người dùng*/
+.user{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+
+/* userImageContainer là phần chứa ảnh đại diện của người dùng*/
+.userImageContainer{
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.avatar{
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.userTextContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: var(--softTextColor);
+}
+
+.username{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* imageContainer là phần chứa image*/
+.imageContainer{
+    flex:1;
+    height: 350px;
+    position: relative; /* để image có thể bao phủ hết phần imageContainer, không bị co dãn khi thay đổi kích thước */
+}
+
+.image{
+    object-fit: cover; /* để image bao phủ hết phần imageContainer, không bị co dãn khi thay đổi kích thước */
+}
+
+.content{
+    display: flex;
+    gap: 50px;
+}
+
+.post{
+    flex: 5;
+    margin-top: 60px;
+}
+
+.description p{
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 20px;
+}

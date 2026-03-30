@@ -1,0 +1,13 @@
+/* title là tiêu đề của trang, content là phần chứa các bài viết */
+.title{
+    background-color: coral;
+    color: white;
+    padding: 5px 10px;
+    text-align: center; /* canh giữa chữ */
+}
+
+/* content sẽ hiển thị các bài viết theo dạng lưới, mỗi hàng có 2 bài viết */
+.content{
+    display: flex;
+    gap: 50px;
+}

@@ -12,11 +12,11 @@ const AuthLinks = () => {
   const status = "notauthenticated"
   return <>
   {status === "notauthenticated" ? (
-    <Link href="/Login" className={styles.link}>Login</Link>
+    <Link href="/Login" className={styles.link}>Đăng nhập</Link>
   ) : (
     <>
-      <Link href="/Write"className={styles.link}>Write</Link>
-      <span className={styles.link}>Logout</span>
+      <Link href="/Write"className={styles.link}>Viết bài</Link>
+      <span className={styles.link}>Đăng xuất</span>
     </>
   )}
   <div className={styles.burger} onClick={() => setOpen(!open)}>
@@ -26,15 +26,15 @@ const AuthLinks = () => {
   </div>
   {open && (
     <div className={styles.responsiveMenu}>
-      <Link href="/">Home</Link>
-      <Link href="/">Contact</Link>
-      <Link href="/">About</Link>
+      <Link href="/">Trang chủ</Link>
+      <Link href="/">Liên hệ</Link>
+      <Link href="/">Giới thiệu</Link>
       {status === "notauthenticated" ? (
-        <Link href="/Login">Login</Link>
+        <Link href="/Login">Đăng nhập</Link>
         ) : (
           <>
-            <Link href="/Write">Write</Link>
-            <span className={styles.link}>Logout</span>
+            <Link href="/Write">Viết bài</Link>
+            <span className={styles.link}>Đăng xuất</span>
           </>
       )}
     </div>
