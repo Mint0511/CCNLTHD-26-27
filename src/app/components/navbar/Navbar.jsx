@@ -3,6 +3,7 @@ import styles from './navbar.module.css'
 import Image from 'next/image'
 import AuthLinks from '../authLinks/AuthLinks'
 import ThemeToggle from '../themeToggle/ThemeToggle'
+import Link from 'next/link'
 
 const Navbar = () => {
   return (
@@ -16,9 +17,9 @@ const Navbar = () => {
       <div className={styles.logo}>Nhom6Blog</div>
       <div className={styles.links}>
         <ThemeToggle />
-        <a href="/" className={styles.link}>Trang chủ</a>
-        <a href="/" className={styles.link}>Liên hệ</a>
-        <a href="/" className={styles.link}>Giới thiệu</a>
+        <Link href="/" className={styles.link}>Trang chủ</Link>
+        <Link href="/" className={styles.link}>Liên hệ</Link>
+        <Link href="/" className={styles.link}>Giới thiệu</Link>
         <AuthLinks />
       </div>
 

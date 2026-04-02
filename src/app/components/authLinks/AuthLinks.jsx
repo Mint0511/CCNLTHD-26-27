@@ -3,20 +3,21 @@
 import { useState } from "react";
 import styles from "./authLinks.module.css";
 import Link from "next/link";
+import { signOut, useSession } from "next-auth/react";
 
 const AuthLinks = () => {
 
   const [open, setOpen] = useState(false)
   
   //temoporary
-  const status = "notauthenticated"
+  const { status } = useSession();
   return <>
-  {status === "notauthenticated" ? (
-    <Link href="/Login" className={styles.link}>Đăng nhập</Link>
+  {status === "unauthenticated" ? (
+    <Link href="/login" className={styles.link}>Đăng nhập</Link>
   ) : (
     <>
-      <Link href="/Write"className={styles.link}>Viết bài</Link>
-      <span className={styles.link}>Đăng xuất</span>
+      <Link href="/write"className={styles.link}>Viết bài</Link>
+      <span className={styles.link} onClick={signOut}>Đăng xuất</span>
     </>
   )}
   <div className={styles.burger} onClick={() => setOpen(!open)}>
@@ -30,10 +31,10 @@ const AuthLinks = () => {
       <Link href="/">Liên hệ</Link>
       <Link href="/">Giới thiệu</Link>
       {status === "notauthenticated" ? (
-        <Link href="/Login">Đăng nhập</Link>
+        <Link href="/login">Đăng nhập</Link>
         ) : (
           <>
-            <Link href="/Write">Viết bài</Link>
+            <Link href="/write">Viết bài</Link>
             <span className={styles.link}>Đăng xuất</span>
           </>
       )}

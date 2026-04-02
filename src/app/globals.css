@@ -91,3 +91,11 @@ a{
         max-width: 475px; /*giới hạn chiều rộng của nội dung khi màn hình nhỏ hơn 640px*/
     }
 }
+
+.ql-container{
+    font-size: 28px !important; /*đặt kích thước chữ cho trình soạn thảo Quill*/
+}
+
+.quill > .ql-container > .ql-editor.ql-blank::before{
+    color: #b3b3b1; /*đặt màu chữ cho placeholder của trình soạn thảo Quill*/
+}
