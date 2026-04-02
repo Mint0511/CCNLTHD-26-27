@@ -6,11 +6,12 @@ import Image from "next/image";
 import { useState } from "react";
 import styles from "./writePage.module.css";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
 const WritePage = () => {
 
-    const {data, status} = useSession()
+    const { status } = useSession()
     const router = useRouter()
     const[open, setOpen] = useState(false);
     const[value, setValue] = useState("");
