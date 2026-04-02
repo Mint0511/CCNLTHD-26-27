@@ -3,8 +3,8 @@ import styles from './cardList.module.css'
 import Pagination from '../pagination/Pagination'
 import Card from '../card/Card'
 
-const getData = async () => {
-  const res = await fetch("http://localhost:3000/api/posts", {
+const getData = async (page) => {
+  const res = await fetch('http://localhost:3000/api/posts?page=${page}', {
     cache: "no-store" 
     });
 
@@ -15,9 +15,9 @@ const getData = async () => {
   return res.json();
 }
 
-const CardList = async() => {
+const CardList = async({page}) => {
   
-  const data = await getData();
+  const data = await getData(page);
 
   return (
     <div className={styles.container}>
