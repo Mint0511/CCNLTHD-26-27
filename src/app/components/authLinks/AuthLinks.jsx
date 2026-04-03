@@ -30,7 +30,7 @@ const AuthLinks = () => {
       <Link href="/">Trang chủ</Link>
       <Link href="/">Liên hệ</Link>
       <Link href="/">Giới thiệu</Link>
-      {status === "notauthenticated" ? (
+      {status === "unauthenticated" ? (
         <Link href="/login">Đăng nhập</Link>
         ) : (
           <>
