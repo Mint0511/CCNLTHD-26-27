@@ -14,7 +14,8 @@ export const GET = async (req) => {
         const posts = await prisma.post.findMany({take: POSTS_PER_PAGE, skip: POSTS_PER_PAGE * (page - 1)});
 
         return new NextResponse(
-            JSON.stringify(posts, { status: 200 })
+            JSON.stringify(posts),
+            { status: 200 }
         );
 
     } catch (error) {

@@ -4,7 +4,7 @@ import Pagination from '../pagination/Pagination'
 import Card from '../card/Card'
 
 const getData = async (page) => {
-  const res = await fetch('http://localhost:3000/api/posts?page=${page}', {
+  const res = await fetch(`http://localhost:3000/api/posts?page=${page}`, {
     cache: "no-store" 
     });
 
@@ -15,7 +15,7 @@ const getData = async (page) => {
   return res.json();
 }
 
-const CardList = async({page}) => {
+const CardList = async({page = 1}) => {
   
   const data = await getData(page);
 
@@ -23,12 +23,12 @@ const CardList = async({page}) => {
     <div className={styles.container}>
       <h1 className={styles.title}>Tin mới nhất</h1>
       <div className={styles.posts}>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+
+        {data?.map((item, index)=>(
+          <Card item={item} key={item._id || index}/>
+        ))}
       </div>
-      <Pagination />
+      <Pagination page={page}/>
     </div>
   )
 }

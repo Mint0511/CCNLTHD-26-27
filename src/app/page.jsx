@@ -6,9 +6,10 @@ import CardList from "./components/CardList/CardList";
 import Menu from "./components/Menu/Menu";
 
 
-export default function Home({searchParams}) {
+export default async function Home({searchParams}) {
 
-  const page = parseInt(searchParams) || 1;
+  const params = await searchParams;
+  const page = parseInt(params?.page) || 1;
 
   return ( 
     <div className={styles.container}>
