@@ -4,6 +4,8 @@
     color: white;
     padding: 5px 10px;
     text-align: center; /* canh giữa chữ */
+    text-transform: capitalize; /* viết hoa chữ cái đầu */
+
 }
 
 /* content sẽ hiển thị các bài viết theo dạng lưới, mỗi hàng có 2 bài viết */

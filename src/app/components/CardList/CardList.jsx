@@ -17,20 +17,28 @@ const getData = async (page) => {
 
 const CardList = async({page = 1}) => {
   
-  const data = await getData(page);
+  const {posts, count} = await getData(page);
+
+  const POST_PER_PAGE = 2;
+
+  const hasPrev = POST_PER_PAGE * (page - 1) > 0;
+  const hasNext = POST_PER_PAGE * (page-1) + POST_PER_PAGE < count;
+
+
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Tin mới nhất</h1>
       <div className={styles.posts}>
 
-        {data?.map((item, index)=>(
+        {posts?.map((item, index)=>(
           <Card item={item} key={item._id || index}/>
-        ))}
+      ))}
       </div>
-      <Pagination page={page}/>
+      <Pagination page={page} hasPrev={hasPrev} hasNext={hasNext}/>
     </div>
   )
 }
 
 export default CardList
+

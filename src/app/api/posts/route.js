@@ -9,12 +9,19 @@ export const GET = async (req) => {
 
     const POSTS_PER_PAGE = 2;
 
+    const query = {
+        take: POSTS_PER_PAGE,
+        skip: POSTS_PER_PAGE * (page - 1),
+    }
+
     try {
 
-        const posts = await prisma.post.findMany({take: POSTS_PER_PAGE, skip: POSTS_PER_PAGE * (page - 1)});
-
+        const [posts,count] = await prisma.$transaction([
+            prisma.post.findMany(),
+            prisma.post.count(),
+        ]);
         return new NextResponse(
-            JSON.stringify(posts),
+            JSON.stringify({posts, count}),
             { status: 200 }
         );
 
