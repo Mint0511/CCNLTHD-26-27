@@ -29,8 +29,8 @@ const Singlepage = async ({params}) => {
                     {data?.title}    
                 </h1>
                 <div className={styles.user}>
-                    {data?.user?.img &&<div className={styles.userImageContainer}>
-                        <Image src={data.user.img} alt="" fill className={styles.avatar}/>
+                    {data?.user?.image &&<div className={styles.userImageContainer}>
+                        <Image src={data.user.image} alt="" fill className={styles.avatar}/>
                     </div>}
                     <div className={styles.userTextContainer}>
                         <span className={styles.username}>{data?.user?.name || "Anonymous"}</span>
@@ -48,7 +48,7 @@ const Singlepage = async ({params}) => {
                 dangerouslySetInnerHTML={{__html: data?.desc}}/>
                 
                 <div className={styles.comments}>
-                    <Comments />
+                    <Comments postSlug={slug}/>
                 </div>
             </div>
             <Menu />        

@@ -1,25 +1,18 @@
 import prisma from "@/app/utils/connect";
 import { NextResponse } from "next/server";
-import { use } from "react";
 
+//GET SINGLE POST
 export const GET = async (req, { params }) => {
   const { slug } = await params;
 
   try {
-    const data = await prisma.post.findUnique({
+    const post = await prisma.post.findUnique({
       where: { slug },
       include: {user: true}
     });
 
-    if (!data) {
-      return new NextResponse(
-        JSON.stringify({ message: "Post not found!" }),
-        { status: 404 }
-      );
-    }
-
     return new NextResponse(
-      JSON.stringify(data),
+      JSON.stringify(post),
       { status: 200 }
     );
   } catch (error) {
