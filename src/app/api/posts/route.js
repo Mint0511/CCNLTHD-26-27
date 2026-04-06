@@ -1,3 +1,4 @@
+import { getAuthSession } from "@/app/utils/auth";
 import prisma from "@/app/utils/connect";
 import { NextResponse } from "next/server"
 
