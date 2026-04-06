@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from './navbar.module.css'
 import Image from 'next/image'
-import AuthLinks from '../authLinks/AuthLinks'
-import ThemeToggle from '../themeToggle/ThemeToggle'
+import AuthLinks from '../AuthLinks/AuthLinks'
+import ThemeToggle from '../ThemeToggle/ThemeToggle'
 import Link from 'next/link'
 
 const Navbar = () => {

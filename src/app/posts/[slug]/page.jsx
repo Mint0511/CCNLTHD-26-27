@@ -1,5 +1,5 @@
 import Menu from '../../components/Menu/Menu'
-import Comments from '../../components/comments/Comments'
+import Comments from '../../components/Comments/Comments'
 import styles from './singlePage.module.css'
 import Image from 'next/image'
 

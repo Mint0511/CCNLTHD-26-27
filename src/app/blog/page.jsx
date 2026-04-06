@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './blogPage.module.css'
-import CardList from '../components/cardList/CardList'
+import CardList from '../components/CardList/CardList'
 import Menu from '../components/Menu/Menu'
 
 const Blogpage = async ({searchParams}) => {
