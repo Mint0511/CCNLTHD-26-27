@@ -3,7 +3,19 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const Card = ({item}) => {
-  return (
+    const labels = {
+        "doi-song": "Đời sống",
+        "cong-nghe": "Công nghệ",
+        "life": "Đời sống",
+        "coding": "Công nghệ",
+        "travel": "Du lịch",
+        "culture": "Văn hóa",
+        "food": "Ẩm thực",
+        "fashion": "Thời trang",
+        "style": "Phong cách",
+    };
+
+    return (
     <div className={styles.container}>
             {item.img && (
                 <div className={styles.imageContainer}>
@@ -13,7 +25,7 @@ const Card = ({item}) => {
         <div className={styles.textContainer}>
             <div className={styles.detail}>
                 <span className={styles.date}>{item.createdAt.substring(0, 10)} - {"  "} </span>
-                <span className={styles.category}>{item.catSlug}</span>
+                <span className={styles.category}>{labels[item.catSlug] || item.catSlug}</span>
             </div>
             <Link href={`/posts/${item.slug}`}>
                 <h1>{item.title}</h1>

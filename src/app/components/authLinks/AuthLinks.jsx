@@ -4,13 +4,13 @@ import { useState } from "react";
 import styles from "./authLinks.module.css";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
 
 const AuthLinks = () => {
 
   const [open, setOpen] = useState(false)
   
-  //temoporary
-  const { status } = useSession();
+  const { status, data } = useSession();
   return <>
   {status === "unauthenticated" ? (
     <Link href="/login" className={styles.link}>Đăng nhập</Link>
@@ -18,6 +18,9 @@ const AuthLinks = () => {
     <>
       <Link href="/write"className={styles.link}>Viết bài</Link>
       <span className={styles.link} onClick={signOut}>Đăng xuất</span>
+      {data?.user?.image && (
+        <Image src={data.user.image} alt="" width={30} height={30} className={styles.avatar} />
+      )}
     </>
   )}
   <div className={styles.burger} onClick={() => setOpen(!open)}>
@@ -28,14 +31,12 @@ const AuthLinks = () => {
   {open && (
     <div className={styles.responsiveMenu}>
       <Link href="/">Trang chủ</Link>
-      <Link href="/">Liên hệ</Link>
-      <Link href="/">Giới thiệu</Link>
       {status === "unauthenticated" ? (
-        <Link href="/login">Đăng nhập</Link>
+        <Link href="/login" onClick={() => setOpen(false)}>Đăng nhập</Link>
         ) : (
           <>
-            <Link href="/write">Viết bài</Link>
-            <span className={styles.link}>Đăng xuất</span>
+            <Link href="/write" onClick={() => setOpen(false)}>Viết bài</Link>
+            <span onClick={signOut}>Đăng xuất</span>
           </>
       )}
     </div>

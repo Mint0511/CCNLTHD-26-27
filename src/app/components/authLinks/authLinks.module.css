@@ -2,14 +2,13 @@
     cursor: pointer; /*thay đổi con trỏ chuột khi hover vào phần tử*/
 }
 
-.burger{
-    width: 20px; /*chiều rộng của burger menu*/
-    height: 16px; /*chiều cao của burger menu*/
-    flex-direction: column; /*bố trí các phần tử con theo cột*/
-    justify-content: space-between; /*phân phối không gian giữa các phần tử con*/
-    cursor: pointer;    /*thay đổi con trỏ chuột khi hover vào phần tử*/
-    display: none; /*ẩn burger menu mặc định*/
-    display: flex; /*sử dụng flexbox để bố trí các phần tử con theo hàng ngang*/
+.burger {
+    width: 20px;
+    height: 16px;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    display: none;
 }
 
 .line{
@@ -25,12 +24,13 @@
     background-color: var(--bg);
     height: calc(100vh - 100px);
     width: 100%; /*chiều rộng của responsiveMenu bằng 100% chiều rộng của phần tử cha*/
-    display: flex; /*sử dụng flexbox để bố trí các phần tử con theo hàng ngang*/
+    display: none; 
     flex-direction: column; /*bố trí các phần tử con theo cột*/
     align-items: center; /*căn giữa các phần tử con theo chiều ngang*/
     justify-content: center; /*căn giữa các phần tử con theo chiều dọc*/
     gap: 50px;
     font-size: 36px; /*kích thước chữ của các liên kết trong responsiveMenu*/
+    z-index: 999;
 }
 
 @media screen and (max-width: 640px){
@@ -41,4 +41,15 @@
     .link{
         display: none; /*ẩn các liên kết khi màn hình nhỏ hơn hoặc bằng 640px*/
     }
+
+    .responsiveMenu {
+        display: flex;
+    }
+}
+
+.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
 }

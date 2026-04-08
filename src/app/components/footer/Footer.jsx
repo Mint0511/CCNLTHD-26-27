@@ -8,43 +8,29 @@ const Footer = () => {
     <div className={styles.container}>
       <div className={styles.info}>
         <div className={styles.logo}>
-          <Image src="/logo.png" alt="Nhom6Blog" width={50} height={50} />
+          <Image src="/logo.jpg" alt="Nhom6Blog" width={50} height={50} className={styles.logoImage} />
           <h1 className={styles.logoText}>Nhom6Blog</h1>
         </div>
         <p className={styles.desc}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Id laborum quidem numquam a eius!
-          Repudiandae, fuga consectetur excepturi blanditiis quasi placeat, molestias dicta soluta, 
-          fugiat beatae culpa laudantium quos quisquam.
+          Nhom6Blog là nền tảng chia sẻ những kiến thức hữu ích về Đời sống, Công nghệ và Thời trang. Chúng tôi luôn nỗ lực mang đến những bài viết chất lượng, giúp bạn cập nhật xu hướng và mở rộng tầm nhìn mỗi ngày.
         </p>
-        <div className={styles.icons}>
-            <Image src="/facebook.png" alt="" width={18} height={18} />
-             <Image src="/instagram.png" alt="" width={18} height={18} />
-            <Image src="/tiktok.png" alt="" width={18} height={18} />
-            <Image src="/youtube.png" alt="" width={18} height={18} />
-        </div>
       </div>
       <div className={styles.links}>
         <div className={styles.list}>
           <span className={styles.listTitle}>Links</span>
           <Link href="/">Trang chủ</Link>
           <Link href="/">Blog</Link>
-          <Link href="/">Về chúng tôi</Link>
-          <Link href="/">Liên hệ</Link>
+          <Link href="/write">Viết bài</Link>
+          <Link href="/login">Đăng nhập</Link>
         </div>
         <div className={styles.list}>
           <span className={styles.listTitle}>Tags</span>
-          <Link href="/">Phong cách</Link>
-          <Link href="/">Thời trang</Link>
-          <Link href="/">Lập trình</Link>
-          <Link href="/">Du lịch</Link>
+          <Link href="/blog?cat=life">Đời sống</Link>
+          <Link href="/blog?cat=style">Phong cách</Link>
+          <Link href="/blog?cat=coding">Công nghệ</Link>
+          <Link href="/blog?cat=travel">Du lịch</Link>
         </div>
-        <div className={styles.list}>
-          <span className={styles.listTitle}>MXH</span>
-          <Link href="/">Facebook</Link>
-          <Link href="/">Instagram</Link>
-          <Link href="/">TikTok</Link>
-          <Link href="/">YouTube</Link>
-        </div>
+
       </div>
     </div>
   )

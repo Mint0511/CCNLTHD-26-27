@@ -6,17 +6,30 @@ export const GET = async (req) => {
 
     const { searchParams } = new URL(req.url);
 
-    const page = searchParams.get("page")
-    const cat = searchParams.get("cat")
+    const pageStr = searchParams.get("page");
+    const page = pageStr && pageStr !== "undefined" ? parseInt(pageStr) : 1;
+    const cat = searchParams.get("cat");
+    const sort = searchParams.get("sort");
 
-    const POSTS_PER_PAGE = 2;
+    const POSTS_PER_PAGE = 10;
 
     const query = {
         take: POSTS_PER_PAGE,
         skip: POSTS_PER_PAGE * (page - 1),
-        where:{
-            ...(cat && {catSlug: cat})
-        }
+        where: {
+            ...(cat && { catSlug: cat }),
+        },
+        include: { user: true },
+        ...(sort === "views" && {
+            orderBy: {
+                views: "desc",
+            },
+        }),
+    };
+
+    if (!pageStr || pageStr === "undefined") {
+        delete query.skip;
+        query.take = 10;
     }
 
     try {
@@ -31,9 +44,10 @@ export const GET = async (req) => {
         );
 
     } catch (error) {
-        console.log(error)
+        console.log(error);
         return new NextResponse(
-            JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
+            JSON.stringify({ message: "Something went wrong!", error: error.message }),
+            { status: 500 }
         );
     }
 };
