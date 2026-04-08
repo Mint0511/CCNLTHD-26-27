@@ -2,8 +2,9 @@
 
 import dynamic from "next/dynamic";
 import "react-quill-new/dist/quill.bubble.css";
+import "react-quill-new/dist/quill.snow.css";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "./writePage.module.css";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
@@ -19,15 +20,14 @@ const WritePage = () => {
     const [value, setValue] = useState("");
     const [title, setTitle] = useState("");
     const [media, setMedia] = useState(""); 
-
-    // useEffect(() => {
-        if (status === "unauthenticated") {
-            router.push("/");
-        }
-    // }, [status, router]);
+    const [catSlug, setCatSlug] = useState("style"); 
 
     if (status === "loading") {
         return <div className={styles.loading}>Loading...</div>;
+    }
+
+    if (status === "unauthenticated") {
+        router.push("/");
     }
 
     const slugify = (str) =>
@@ -46,14 +46,33 @@ const WritePage = () => {
                 desc: value,
                 img: media, 
                 slug: slugify(title),
-                catSlug:"travel"
+                catSlug: catSlug || "style"
             }), 
         });
-        console.log(res)
+
+        if (res.status === 200) {
+            alert("Đã đăng bài thành công!");
+            router.push("/");
+        } else {
+            alert("Đã có lỗi xảy ra khi đăng bài!");
+        }
     };
 
     return (
         <div className={styles.container}>
+            <div className={styles.top}>
+                <select className={styles.select} onChange={(e) => setCatSlug(e.target.value)}>
+                    <option value="style">Phong cách</option>
+                    <option value="fashion">Thời trang</option>
+                    <option value="food">Ẩm thực</option>
+                    <option value="culture">Văn hóa</option>
+                    <option value="travel">Du lịch</option>
+                    <option value="coding">Công nghệ</option>
+                    <option value="life">Đời sống</option>
+                </select>
+                <button className={styles.publish} onClick={handleSubmit}>Đăng bài</button>
+            </div>
+
             <input 
                 type="text" 
                 placeholder="Tiêu đề bài viết..." 
@@ -61,7 +80,6 @@ const WritePage = () => {
                 onChange={(e) => setTitle(e.target.value)}
             />
 
-            {/* TODO: ADD CATEGORY*/}
             <div className={styles.editor}>
                 <button className={styles.button} onClick={() => setOpen(!open)}>
                     <Image src="/plus.png" alt="" width={16} height={16} />
@@ -82,24 +100,27 @@ const WritePage = () => {
                                 </button>
                             )}
                         </CldUploadWidget>
-
-                        <button className={styles.addButton}>
-                            <Image src="/external.png" alt="" width={16} height={16} />
-                        </button>
-                        <button className={styles.addButton}>
-                            <Image src="/video.png" alt="" width={16} height={16} />
-                        </button>
                     </div>
                 )}
                 <ReactQuill
                     className={styles.textArea}
-                    theme="bubble"
+                    theme="snow"
                     value={value}
                     onChange={setValue}
                     placeholder="Hãy kể câu chuyện của bạn..."
+                    modules={{
+                        toolbar: [
+                            [{ 'header': [1, 2, false] }],
+                            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+                            [{ 'color': [] }, { 'background': [] }],
+                            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                            [{ 'align': [] }],
+                            ['link', 'image'],
+                            ['clean']
+                        ],
+                    }}
                 />
             </div>
-            <button className={styles.publish} onClick={handleSubmit}>Đăng bài</button>
             
             {media && <p style={{fontSize:"12px", color:"green"}}>Đã chọn ảnh: {media.substring(0, 50)}...</p>}
         </div>

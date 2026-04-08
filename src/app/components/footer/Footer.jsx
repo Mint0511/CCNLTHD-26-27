@@ -1,9 +1,14 @@
+"use client"
+
 import React from 'react'
 import styles from './footer.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useSession, signOut } from 'next-auth/react'
 
 const Footer = () => {
+  const { status } = useSession();
+
   return (
     <div className={styles.container}>
       <div className={styles.info}>
@@ -20,8 +25,14 @@ const Footer = () => {
           <span className={styles.listTitle}>Links</span>
           <Link href="/">Trang chủ</Link>
           <Link href="/">Blog</Link>
-          <Link href="/write">Viết bài</Link>
-          <Link href="/login">Đăng nhập</Link>
+          {status === "authenticated" ? (
+            <>
+              <Link href="/write">Viết bài</Link>
+              <span className={styles.link} onClick={signOut} style={{cursor:"pointer"}}>Đăng xuất</span>
+            </>
+          ) : (
+            <Link href="/login">Đăng nhập</Link>
+          )}
         </div>
         <div className={styles.list}>
           <span className={styles.listTitle}>Tags</span>

@@ -19,9 +19,20 @@ const getData = async () => {
 
 const CategoryList = async() => {
   const data = await getData();
+
+  const labels = {
+    style: "Phong cách",
+    fashion: "Thời trang",
+    food: "Ẩm thực",
+    culture: "Văn hóa",
+    travel: "Du lịch",
+    coding: "Công nghệ",
+    life: "Đời sống",
+  };
+
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Popular Categories</h1>
+      <h1 className={styles.title}>Danh mục phổ biến</h1>
       <div className={styles.categories}>
         { data?.map((item, index)=>(
           <Link 
@@ -38,7 +49,7 @@ const CategoryList = async() => {
               className={styles.image} 
             />
           )}
-          {item.title}
+          {labels[item.slug] || item.title}
         </Link>
         ))}
       </div>

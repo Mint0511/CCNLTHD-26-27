@@ -31,7 +31,7 @@ const Card = ({item}) => {
                 <h1>{item.title}</h1>
             </Link>
             <p className={styles.desc}>
-                {item.desc.substring(0, 60)}
+                {item?.desc.replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, ' ').substring(0, 160)}...
             </p>
             <Link href={`/posts/${item.slug}`} className={styles.link}>
                 Đọc thêm

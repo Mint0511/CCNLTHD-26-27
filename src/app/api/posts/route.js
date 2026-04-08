@@ -11,7 +11,7 @@ export const GET = async (req) => {
     const cat = searchParams.get("cat");
     const sort = searchParams.get("sort");
 
-    const POSTS_PER_PAGE = 10;
+    const POSTS_PER_PAGE = 3;
 
     const query = {
         take: POSTS_PER_PAGE,
@@ -29,7 +29,7 @@ export const GET = async (req) => {
 
     if (!pageStr || pageStr === "undefined") {
         delete query.skip;
-        query.take = 10;
+        query.take = 3;
     }
 
     try {

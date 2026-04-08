@@ -31,11 +31,20 @@ const Comments = ({ postSlug }) => {
     const [desc, setDesc] = useState("")
 
     const handlerSubmit = async () => {
+        if (!desc.trim()) return;
         await fetch("/api/comments", {
             method: "POST",
             body: JSON.stringify({desc, postSlug}),
         }) 
+        setDesc("")
         mutate()
+    }
+
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            handlerSubmit();
+        }
     }
 
     return (
@@ -47,6 +56,8 @@ const Comments = ({ postSlug }) => {
                     placeholder="Viết bình luận..." 
                     className={styles.input} 
                     onChange={e=>setDesc(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                    value={desc}
                 />
                 <button className={styles.button} onClick={handlerSubmit}>Gửi</button>
             </div>
