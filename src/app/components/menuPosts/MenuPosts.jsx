@@ -4,7 +4,8 @@ import Image from 'next/image'
 import styles from './menuPosts.module.css'
 
 const getPosts = async () => {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts?sort=views`, {
+  const baseUrl = process.env.NEXTAUTH_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+  const res = await fetch(`${baseUrl}/api/posts?sort=views`, {
     cache: "no-store",
   });
 
@@ -16,7 +17,8 @@ const getPosts = async () => {
 };
 
 const getCategories = async () => {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/categories`, {
+  const baseUrl = process.env.NEXTAUTH_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+  const res = await fetch(`${baseUrl}/api/categories`, {
     cache: "no-store",
   });
 

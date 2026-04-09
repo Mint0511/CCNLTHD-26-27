@@ -5,7 +5,8 @@ import Card from '../card/Card'
 
 // Hàm fetch dữ liệu từ API: chấp nhận trang (page), danh mục (cat) và từ khóa tìm kiếm (search)
 const getData = async (page, cat, search) => {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts?page=${page}&cat=${cat || ""}&search=${search || ""}`, {
+  const baseUrl = process.env.NEXTAUTH_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+  const res = await fetch(`${baseUrl}/api/posts?page=${page}&cat=${cat || ""}&search=${search || ""}`, {
     cache: "no-store", // Không lưu cache để dữ liệu luôn mới nhất
     });
 

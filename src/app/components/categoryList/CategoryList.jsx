@@ -6,7 +6,8 @@ import Link from 'next/link'
 // CategoryList là một component React hiển thị danh sách các thể loại phổ biến.*/
 
 const getData = async () => {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/categories`, {
+  const baseUrl = process.env.NEXTAUTH_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+  const res = await fetch(`${baseUrl}/api/categories`, {
     cache: "no-store" 
     });
 

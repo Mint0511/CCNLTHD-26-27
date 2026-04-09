@@ -2,10 +2,8 @@ import styles from './card.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const Card = ({item}) => {
+const Card = ({ item }) => {
     const labels = {
-        "doi-song": "Đời sống",
-        "cong-nghe": "Công nghệ",
         "life": "Đời sống",
         "coding": "Công nghệ",
         "travel": "Du lịch",
@@ -16,29 +14,29 @@ const Card = ({item}) => {
     };
 
     return (
-    <div className={styles.container}>
+        <div className={styles.container}>
             {item.img && (
                 <div className={styles.imageContainer}>
-                <Image src={item.img} alt={item.title} fill className={styles.image}/>
-            </div>
+                    <Image src={item.img} alt={item.title} fill className={styles.image} />
+                </div>
             )}
-        <div className={styles.textContainer}>
-            <div className={styles.detail}>
-                <span className={styles.date}>{item.createdAt.substring(0, 10)} - {"  "} </span>
-                <span className={styles.category}>{labels[item.catSlug] || item.catSlug}</span>
+            <div className={styles.textContainer}>
+                <div className={styles.detail}>
+                    <span className={styles.date}>{item.createdAt.substring(0, 10)} - {"  "} </span>
+                    <span className={styles.category}>{labels[item.catSlug] || item.catSlug}</span>
+                </div>
+                <Link href={`/posts/${item.slug}`}>
+                    <h1>{item.title}</h1>
+                </Link>
+                <p className={styles.desc}>
+                    {item?.desc.replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, ' ').substring(0, 160)}...
+                </p>
+                <Link href={`/posts/${item.slug}`} className={styles.link}>
+                    Đọc thêm
+                </Link>
             </div>
-            <Link href={`/posts/${item.slug}`}>
-                <h1>{item.title}</h1>
-            </Link>
-            <p className={styles.desc}>
-                {item?.desc.replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, ' ').substring(0, 160)}...
-            </p>
-            <Link href={`/posts/${item.slug}`} className={styles.link}>
-                Đọc thêm
-            </Link>
         </div>
-    </div>
-  )
+    )
 }
 
 export default Card

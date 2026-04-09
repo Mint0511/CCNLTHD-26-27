@@ -7,6 +7,8 @@ export const GET = async (req, { params }) => {
   const { slug } = await params;
 
   try {
+    // Attempt to update view count and fetch post in one go
+    // Note: Prisma update throws if record is not found
     const post = await prisma.post.update({
       where: { slug },
       data: { views: { increment: 1 } },
@@ -18,11 +20,33 @@ export const GET = async (req, { params }) => {
       { status: 200 }
     );
   } catch (error) {
-    console.error("API Error:", error);
-    return new NextResponse(
-      JSON.stringify({ message: "Something went wrong!" }),
-      { status: 500 }
-    );
+    console.error("API Error fetching post:", error);
+    
+    // Check if it's a "Record not found" error (Common in Prisma update)
+    // Or just try to find it without updating if it's not found
+    try {
+      const post = await prisma.post.findUnique({
+        where: { slug },
+        include: { user: true }
+      });
+
+      if (!post) {
+        return new NextResponse(
+          JSON.stringify({ message: "Post not found!" }),
+          { status: 404 }
+        );
+      }
+
+      return new NextResponse(
+        JSON.stringify(post),
+        { status: 200 }
+      );
+    } catch (secondError) {
+      return new NextResponse(
+        JSON.stringify({ message: "Something went wrong!" }),
+        { status: 500 }
+      );
+    }
   }
 };
 

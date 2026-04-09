@@ -6,9 +6,14 @@ import { getAuthSession } from '@/app/utils/auth'
 import PostActions from '@/app/components/postActions/PostActions'
 
 const getData = async (slug) => {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts/${slug}`, {
+  const baseUrl = process.env.NEXTAUTH_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+  const res = await fetch(`${baseUrl}/api/posts/${slug}`, {
     cache: "no-store"
   });
+
+  if (res.status === 404) {
+    return null;
+  }
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
@@ -39,6 +44,15 @@ const Singlepage = async ({params}) => {
     const {slug} = await params;
     const session = await getAuthSession();
     const data = await getData(slug);
+
+  if (!data) {
+    return (
+      <div className={styles.container}>
+        <h1 className={styles.title}>Bài viết không tồn tại</h1>
+        <p>Xin lỗi, bài viết bạn đang tìm kiếm không còn tồn tại hoặc đã bị xóa.</p>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.container}>
