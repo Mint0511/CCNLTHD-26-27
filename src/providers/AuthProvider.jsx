@@ -2,9 +2,7 @@
 
 import { SessionProvider } from "next-auth/react";
 
-const AuthProvider = (props) => {
-  const { children } = props;
-
+const AuthProvider = ({ children }) => {
   return (
     <SessionProvider refetchInterval={0}>
       {children}
