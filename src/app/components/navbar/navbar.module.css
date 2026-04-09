@@ -1,52 +1,67 @@
-/* Các phần tử con của container */
+/* Navbar chính dùng Flexbox để dàn hàng ngang */
 .container{
-    display: flex; /*sử dụng flexbox để bố trí các phần tử con theo hàng ngang*/
-    align-items: center; /*căn giữa các phần tử con theo chiều dọc*/
-    justify-content: space-between; /*phân phối không gian giữa các phần tử con*/
-    height: 100px; /*chiều cao của navbar*/
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
 }
 
-/* Phần tử con social */
+/* Khối bên TRÁI: Logo đối tác + Thanh tìm kiếm. Căn về phía bắt đầu đầu (lề trái) */
+.left {
+    display: flex;
+    align-items: center;
+    flex: 1; /* Chiếm 1/3 chiều ngang */
+    justify-content: space-between; /* Đẩy cụm Logo sang trái, Search sang phải của khối này */
+}
+
 .social{
-    display: flex; /*sử dụng flexbox để bố trí các phần tử con theo hàng ngang*/
-    gap: 10px; /*khoảng cách giữa các phần tử con*/
-    flex: 1; /*cho phép phần tử social chiếm không gian còn lại trong container*/
+    display: flex;
+    gap: 10px;
 }
 
+/* Khối GIỮA: Tiêu đề. Flex 1 giúp nó chiếm 1/3 chiều ngang và text-align: center giúp chữ nằm ở tâm màn hình */
 .logo{
-    flex: 1; /*cho phép phần tử logo chiếm không gian còn lại trong container*/
-    text-align: center; /*căn giữa nội dung của phần tử logo theo chiều ngang*/
-    font-size: 36px; /*kích thước chữ của logo*/
-    font-weight: bold; /*độ đậm của chữ logo*/
+    flex: 1;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+/* Khối bên PHẢI: Menu navigation. Căn về phía cuối (lề phải) */
+.right {
+    flex: 1; /* Chiếm 1/3 còn lại */
+    display: flex;
+    justify-content: flex-end;
 }
 
 .links{
-    display: flex; /*sử dụng flexbox để bố trí các phần tử con theo hàng ngang*/
+    display: flex;
     align-items: center;
-    gap: 20px; /*khoảng cách giữa các phần tử con*/
-    flex: 1; /*cho phép phần tử links chiếm không gian còn lại trong container*/
-    font-size: 20px; /*kích thước chữ của các liên kết*/
-    white-space: nowrap; /*ngăn chặn việc xuống dòng của các liên kết*/
+    gap: 20px;
+    font-size: 20px;
+    white-space: nowrap;
 }
 
 @media screen and (max-width: 1280px){
+    /* Khi màn hình bắt đầu nhỏ lại, giảm kích thước chữ của logo và các link */
     .logo {
-        font-size: 32px; /*kích thước chữ của logo khi màn hình nhỏ hơn hoặc bằng 1280px*/
+        font-size: 32px;
     }
     
     .links {
-        font-size: 18px; /*kích thước chữ của các liên kết khi màn hình nhỏ hơn hoặc bằng 1280px*/
-        gap: 15px; /*khoảng cách giữa các phần tử con khi màn hình nhỏ hơn hoặc bằng 1280px*/
+        font-size: 18px;
+        gap: 15px;
     }
 }
 
 @media screen and (max-width: 1024px){
-    .social {
-        display: none; /*ẩn phần tử social khi màn hình nhỏ hơn hoặc bằng 1024px*/
+    /* Ẩn bớt khối Trái (Logo + Search) khi màn hình Tablet để tránh bị chèn ép layout */
+    .left {
+        display: none; 
     }
 
     .logo {
-        text-align: left; /*căn trái nội dung của phần tử logo khi màn hình nhỏ hơn hoặc bằng 1024px*/ 
+        text-align: left; /* Đưa tiêu đề về bên trái để có chỗ cho Menu bên phải */
     }
 }
 

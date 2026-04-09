@@ -3,9 +3,10 @@ import styles from './cardList.module.css'
 import Pagination from '../Pagination/Pagination'
 import Card from '../Card/Card'
 
-const getData = async (page, cat) => {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts?page=${page}&cat=${cat || ""}`, {
-    cache: "no-store", 
+// Hàm fetch dữ liệu từ API: chấp nhận trang (page), danh mục (cat) và từ khóa tìm kiếm (search)
+const getData = async (page, cat, search) => {
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts?page=${page}&cat=${cat || ""}&search=${search || ""}`, {
+    cache: "no-store", // Không lưu cache để dữ liệu luôn mới nhất
     });
 
   if (!res.ok) {
@@ -15,12 +16,14 @@ const getData = async (page, cat) => {
   return res.json();
 }
 
-const CardList = async({page, cat}) => {
+const CardList = async({page, cat, search}) => {
   
-  const {posts, count} = await getData(page, cat);
+  // Gọi hàm lấy dữ liệu bài viết
+  const {posts, count} = await getData(page, cat, search);
 
   const POST_PER_PAGE = 2;
 
+  // Tính toán logic Phân trang (Pagination)
   const hasPrev = POST_PER_PAGE * (page - 1) > 0;
   const hasNext = POST_PER_PAGE * (page-1) + POST_PER_PAGE < count;
 

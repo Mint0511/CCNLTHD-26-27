@@ -1,0 +1,66 @@
+/* Container chính của thanh tìm kiếm */
+.container {
+    display: flex;
+    align-items: center;
+    background-color: var(--softBg); /* Màu nền nhẹ nhàng */
+    border-radius: 25px; /* Bo tròn hoàn toàn 2 đầu (Pill-shape) */
+    padding: 0 15px;
+    height: 40px;
+    width: 100%;
+    max-width: 400px;
+    margin-left: 20px; /* Tạo khoảng cách nhỏ với cụm Logo bên trái */
+    border: none;
+    transition: all 0.3s ease;
+}
+
+/* Hiệu ứng khi người dùng nhấn vào thanh tìm kiếm (hoặc con trỏ đang ở trong input) */
+.container:focus-within {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    /* Đổ bóng nhẹ tạo chiều sâu */
+    background-color: var(--bg);
+    /* Đổi sang màu nền trắng/đen đậm hơn */
+}
+
+/* Ô nhập liệu */
+.input {
+    border: none;
+    outline: none;
+    /* Xóa viền xanh mặc định của trình duyệt */
+    background: transparent;
+    color: var(--textColor);
+    width: 100%;
+    font-size: 15px;
+    padding: 10px 0;
+}
+
+/* Nút bấm tìm kiếm (chứa icon kính lúp) */
+.button {
+    background-color: transparent !important;
+    background: none !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    /* Xóa mọi khung/viền mặc định */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 !important;
+    margin: 0 0 0 10px !important;
+    width: 25px;
+    height: 25px;
+    opacity: 0.5;
+    /* Làm mờ nhẹ icon khi bình thường */
+}
+
+/* Hiệu ứng khi di chuột vào nút tìm kiếm */
+.button:hover {
+    opacity: 1;
+    /* Hiện rõ icon lên */
+}
+
+@media screen and (max-width: 1024px) {
+    .container {
+        display: none;
+    }
+}

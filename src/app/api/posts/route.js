@@ -10,14 +10,26 @@ export const GET = async (req) => {
     const page = pageStr && pageStr !== "undefined" ? parseInt(pageStr) : 1;
     const cat = searchParams.get("cat");
     const sort = searchParams.get("sort");
+    
+    // Lấy từ khóa tìm kiếm (search) từ URL query string
+    const search = searchParams.get("search");
 
     const POSTS_PER_PAGE = 3;
 
+    // Cấu hình query truy vấn Database
     const query = {
         take: POSTS_PER_PAGE,
         skip: POSTS_PER_PAGE * (page - 1),
         where: {
+            // Nếu có Category (cat), sẽ lọc theo Category
             ...(cat && { catSlug: cat }),
+            // Nếu có từ khóa tìm kiếm (search), sẽ dùng toán tử OR để tìm trong Tiêu đề hoặc Nội dung
+            ...(search && {
+                OR: [
+                    { title: { contains: search, mode: "insensitive" } }, // Tìm trong Tiêu đề (không phân biệt hoa thường)
+                    { desc: { contains: search, mode: "insensitive" } },  // Tìm trong Nội dung (không phân biệt hoa thường)
+                ],
+            }),
         },
         include: { user: true },
         ...(sort === "views" && {

@@ -8,15 +8,17 @@ import Menu from "./components/Menu/Menu";
 
 export default async function Home({searchParams}) {
 
+  // Lấy các tham số từ URL (ví dụ: ?page=2&search=abc)
   const params = await searchParams;
   const page = parseInt(params?.page) || 1;
+  const search = params?.search || "";
 
   return ( 
     <div className={styles.container}>
       <Featured />
       <CategoryList />
       <div className={styles.content}>
-        <CardList page={page}/>
+        <CardList page={page} search={search}/>
         <Menu />
       </div>
     </div>

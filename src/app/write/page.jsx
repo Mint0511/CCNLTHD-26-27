@@ -10,7 +10,26 @@ import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { CldUploadWidget } from 'next-cloudinary';
 
-const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
+const ReactQuill = dynamic(async () => {
+    const { default: RQ } = await import("react-quill-new");
+    const Quill = (await import("react-quill-new")).Quill;
+    
+    // --- ĐĂNG KÝ CẤU HÌNH CHO TRÌNH SOẠN THẢO (ReactQuill) ---
+
+    // 1. Cấu hình Cỡ chữ (Size): Cho phép nhập số px thực tế thay vì dùng tên (small/large)
+    const Size = Quill.import("attributors/style/size");
+    Size.whitelist = ["12px", "14px", "16px", "18px", "20px", "24px", "30px", "36px"];
+    Quill.register(Size, true);
+
+    // 2. Cấu hình Kiểu chữ (Font): Thêm các bộ font phổ biến (Arial, Times New Roman,...)
+    const Font = Quill.import("attributors/style/font");
+    Font.whitelist = ["arial", "georgia", "helvetica", "lucida", "tahoma", "times-new-roman", "trebuchet", "verdana"];
+    Quill.register(Font, true);
+
+    // --------------------------------------------------------
+
+    return RQ;
+}, { ssr: false });
 
 const WritePage = () => {
     const { status } = useSession();
@@ -110,7 +129,9 @@ const WritePage = () => {
                     placeholder="Hãy kể câu chuyện của bạn..."
                     modules={{
                         toolbar: [
-                            [{ 'header': [1, 2, false] }],
+                            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                            [{ 'font': ["arial", "georgia", "helvetica", "lucida", "tahoma", "times-new-roman", "trebuchet", "verdana"] }],
+                            [{ 'size': ["12px", "14px", "16px", "18px", "20px", "24px", "30px", "36px"] }],
                             ['bold', 'italic', 'underline', 'strike', 'blockquote'],
                             [{ 'color': [] }, { 'background': [] }],
                             [{ 'list': 'ordered' }, { 'list': 'bullet' }],

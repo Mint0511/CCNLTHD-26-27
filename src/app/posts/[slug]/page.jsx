@@ -15,6 +15,23 @@ const getData = async (slug) => {
   return res.json();
 }
 
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const data = await getData(slug);
+
+  if (!data) {
+    return {
+      title: "Bài viết không tồn tại",
+    };
+  }
+
+  return {
+    title: `${data.title} | Nhom6Blog`,
+    description: data.desc?.substring(0, 160).replace(/<[^>]*>/g, ""), // Remove HTML tags for description
+  };
+}
+
 const Singlepage = async ({params}) => {
 
     const {slug} = await params;
