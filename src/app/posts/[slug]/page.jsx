@@ -2,6 +2,8 @@ import Menu from '../../components/Menu/Menu'
 import Comments from '../../components/comments/Comments'
 import styles from './singlePage.module.css'
 import Image from 'next/image'
+import { getAuthSession } from '@/app/utils/auth'
+import PostActions from '@/app/components/postActions/PostActions'
 
 const getData = async (slug) => {
   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts/${slug}`, {
@@ -35,7 +37,7 @@ export async function generateMetadata({ params }) {
 const Singlepage = async ({params}) => {
 
     const {slug} = await params;
-
+    const session = await getAuthSession();
     const data = await getData(slug);
 
   return (
@@ -54,6 +56,9 @@ const Singlepage = async ({params}) => {
                         <span className={styles.date}>01.01.2026</span>
                     </div>
                 </div>
+                {session?.user?.email === data?.userEmail && (
+                    <PostActions slug={slug} />
+                )}
             </div>
             {data?.img && <div className={styles.imageContainer}>
                 <Image src={data.img} alt="" fill className={styles.image}/>
@@ -74,4 +79,4 @@ const Singlepage = async ({params}) => {
   )
 }
 
-export default Singlepage
+export default Singlepage

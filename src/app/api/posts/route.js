@@ -10,6 +10,7 @@ export const GET = async (req) => {
     const page = pageStr && pageStr !== "undefined" ? parseInt(pageStr) : 1;
     const cat = searchParams.get("cat");
     const sort = searchParams.get("sort");
+    const userEmail = searchParams.get("userEmail");
     
     // Lấy từ khóa tìm kiếm (search) từ URL query string
     const search = searchParams.get("search");
@@ -23,6 +24,8 @@ export const GET = async (req) => {
         where: {
             // Nếu có Category (cat), sẽ lọc theo Category
             ...(cat && { catSlug: cat }),
+            // Nếu có userEmail, sẽ lọc theo tác giả
+            ...(userEmail && { userEmail }),
             // Nếu có từ khóa tìm kiếm (search), sẽ dùng toán tử OR để tìm trong Tiêu đề hoặc Nội dung
             ...(search && {
                 OR: [

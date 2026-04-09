@@ -19,7 +19,9 @@ const AuthLinks = () => {
       <Link href="/write"className={styles.link}>Viết bài</Link>
       <span className={styles.link} onClick={signOut}>Đăng xuất</span>
       {data?.user?.image && (
-        <Image src={data.user.image} alt="" width={30} height={30} className={styles.avatar} />
+        <Link href="/profile">
+          <Image src={data.user.image} alt="" width={30} height={30} className={styles.avatar} />
+        </Link>
       )}
     </>
   )}
@@ -35,6 +37,7 @@ const AuthLinks = () => {
         <Link href="/login" onClick={() => setOpen(false)}>Đăng nhập</Link>
         ) : (
           <>
+            <Link href="/profile" onClick={() => setOpen(false)}>Hồ sơ</Link>
             <Link href="/write" onClick={() => setOpen(false)}>Viết bài</Link>
             <span onClick={signOut}>Đăng xuất</span>
           </>

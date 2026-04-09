@@ -1,0 +1,132 @@
+.container {
+    padding: 20px 0;
+}
+
+.title {
+    font-size: 36px;
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+.userCard {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 30px;
+    border-radius: 15px;
+    background-color: var(--softBg);
+    margin-bottom: 50px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.avatarContainer {
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+
+.avatar {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.name {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--textColor);
+}
+
+.email {
+    font-size: 16px;
+    color: var(--softTextColor);
+}
+
+.subtitle {
+    font-size: 24px;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.postList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.postItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--softBg);
+    transition: transform 0.2s;
+}
+
+.postItem:hover {
+    transform: translateY(-2px);
+}
+
+.postInfo {
+    flex: 1;
+}
+
+.postTitle {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--textColor);
+    text-decoration: none;
+}
+
+.postDate {
+    font-size: 14px;
+    color: var(--softTextColor);
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+}
+
+.editBtn {
+    padding: 8px 16px;
+    background-color: #2c3e50;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: opacity 0.3s;
+}
+
+.deleteBtn {
+    padding: 8px 16px;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: opacity 0.3s;
+}
+
+.editBtn:hover, .deleteBtn:hover {
+    opacity: 0.8;
+}
+
+.noPosts {
+    padding: 40px;
+    text-align: center;
+    color: var(--softTextColor);
+    background-color: var(--softBg);
+    border-radius: 10px;
+    font-style: italic;
+}
