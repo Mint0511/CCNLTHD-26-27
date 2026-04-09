@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './cardList.module.css'
-import Pagination from '../Pagination/Pagination'
-import Card from '../Card/Card'
+import Pagination from '../pagination/Pagination'
+import Card from '../card/Card'
 
 // Hàm fetch dữ liệu từ API: chấp nhận trang (page), danh mục (cat) và từ khóa tìm kiếm (search)
 const getData = async (page, cat, search) => {
