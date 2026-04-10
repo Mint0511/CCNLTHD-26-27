@@ -27,9 +27,16 @@ const ReactQuill = dynamic(async () => {
     Quill.register(Font, true);
 
     // --------------------------------------------------------
+    
+    // 3. Cấu hình Thay đổi kích thước ảnh (Image Resize)
+    Quill.Attributor = Quill.import("parchment").Attributor;
+    window.Quill = Quill;
+    const { default: ImageResize } = await import("quill-image-resize-module-react");
+    Quill.register("modules/imageResize", ImageResize);
 
     return RQ;
 }, { ssr: false });
+
 
 const WritePage = () => {
     const { status } = useSession();
@@ -139,6 +146,9 @@ const WritePage = () => {
                             ['link', 'image'],
                             ['clean']
                         ],
+                        imageResize: {
+                            modules: ['Resize', 'DisplaySize', 'Toolbar']
+                        },
                     }}
                 />
             </div>

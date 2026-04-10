@@ -21,7 +21,7 @@ const fetcher = async(url) =>{
 
 const Comments = ({ postSlug }) => {
   
-    const { status } = useSession()
+    const { data: session, status } = useSession()
 
     const {data, mutate, isLoading} = useSWR(
         postSlug ? `/api/comments?postSlug=${postSlug}` : null,
@@ -39,6 +39,19 @@ const Comments = ({ postSlug }) => {
         setDesc("")
         mutate()
     }
+
+    const handleDelete = async (id) => {
+        if (!confirm("Bạn có chắc chắn muốn xóa bình luận này không?")) return;
+        const res = await fetch(`/api/comments/${id}`, {
+            method: "DELETE",
+        });
+
+        if (res.ok) {
+            mutate();
+        } else {
+            alert("Có lỗi xảy ra khi xóa bình luận!");
+        }
+    };
 
     const handleKeyDown = (e) => {
         if (e.key === "Enter" && !e.shiftKey) {
@@ -81,6 +94,14 @@ const Comments = ({ postSlug }) => {
                     </div>
                 </div>
                 <p className={styles.text}>{item.desc}</p>
+                {session?.user?.email === item.userEmail && (
+                    <button 
+                        className={styles.delete} 
+                        onClick={() => handleDelete(item.id)}
+                    >
+                        Xóa
+                    </button>
+                )}
             </div>
             ))}
         </div>
