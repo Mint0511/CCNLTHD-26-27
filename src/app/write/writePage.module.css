@@ -99,80 +99,9 @@
     width: 100%;
 }
 
-.editor :global(.ql-toolbar.ql-snow) {
-    border: none !important;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
-    margin-bottom: 10px;
+.textArea {
+    width: 100%;
 }
-
-.editor :global(.ql-container.ql-snow) {
-    border: none !important;
-}
-
-/* --- THAY ĐỔI NHÃN (LABEL) TRÊN THANH CÔNG CỤ EDITOR --- */
-/* Quill mặc định không hiện tên font/size, nên ta phải dùng CSS để chèn tên vào */
-
-/* 1. Hiển thị tên Kiểu chữ (Font) */
-.editor :global(.ql-picker.ql-font .ql-picker-label::before),
-.editor :global(.ql-picker.ql-font .ql-picker-item::before) {
-    content: "Arial" !important;
-}
-.editor :global(.ql-picker.ql-font .ql-picker-label[data-value="georgia"]::before),
-.editor :global(.ql-picker.ql-font .ql-picker-item[data-value="georgia"]::before) {
-    content: "Georgia" !important;
-}
-.editor :global(.ql-picker.ql-font .ql-picker-label[data-value="helvetica"]::before),
-.editor :global(.ql-picker.ql-font .ql-picker-item[data-value="helvetica"]::before) {
-    content: "Helvetica" !important;
-}
-.editor :global(.ql-picker.ql-font .ql-picker-label[data-value="tahoma"]::before),
-.editor :global(.ql-picker.ql-font .ql-picker-item[data-value="tahoma"]::before) {
-    content: "Tahoma" !important;
-}
-.editor :global(.ql-picker.ql-font .ql-picker-label[data-value="times-new-roman"]::before),
-.editor :global(.ql-picker.ql-font .ql-picker-item[data-value="times-new-roman"]::before) {
-    content: "Times New Roman" !important;
-}
-.editor :global(.ql-picker.ql-font .ql-picker-label[data-value="verdana"]::before),
-.editor :global(.ql-picker.ql-font .ql-picker-item[data-value="verdana"]::before) {
-    content: "Verdana" !important;
-}
-
-/* 2. Hiển thị con số Cỡ chữ (Size) */
-.editor :global(.ql-picker.ql-size .ql-picker-label::before),
-.editor :global(.ql-picker.ql-size .ql-picker-item::before) {
-    content: "16px" !important;
-}
-.editor :global(.ql-picker.ql-size .ql-picker-label[data-value="12px"]::before),
-.editor :global(.ql-picker.ql-size .ql-picker-item[data-value="12px"]::before) {
-    content: "12px" !important;
-}
-.editor :global(.ql-picker.ql-size .ql-picker-label[data-value="14px"]::before),
-.editor :global(.ql-picker.ql-size .ql-picker-item[data-value="14px"]::before) {
-    content: "14px" !important;
-}
-.editor :global(.ql-picker.ql-size .ql-picker-label[data-value="18px"]::before),
-.editor :global(.ql-picker.ql-size .ql-picker-item[data-value="18px"]::before) {
-    content: "18px" !important;
-}
-.editor :global(.ql-picker.ql-size .ql-picker-label[data-value="20px"]::before),
-.editor :global(.ql-picker.ql-size .ql-picker-item[data-value="20px"]::before) {
-    content: "20px" !important;
-}
-.editor :global(.ql-picker.ql-size .ql-picker-label[data-value="24px"]::before),
-.editor :global(.ql-picker.ql-size .ql-picker-item[data-value="24px"]::before) {
-    content: "24px" !important;
-}
-.editor :global(.ql-picker.ql-size .ql-picker-label[data-value="30px"]::before),
-.editor :global(.ql-picker.ql-size .ql-picker-item[data-value="30px"]::before) {
-    content: "30px" !important;
-}
-.editor :global(.ql-picker.ql-size .ql-picker-label[data-value="36px"]::before),
-.editor :global(.ql-picker.ql-size .ql-picker-item[data-value="36px"]::before) {
-    content: "36px" !important;
-}
-
-/* ------------------------------------------------------------ */
 
 .publish {
     padding: 10px 25px;
