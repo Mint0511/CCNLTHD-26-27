@@ -35,11 +35,7 @@ export const GET = async (req) => {
             }),
         },
         include: { user: true },
-        ...(sort === "views" && {
-            orderBy: {
-                views: "desc",
-            },
-        }),
+        orderBy: sort === "views" ? { views: "desc" } : { createdAt: "desc" },
     };
 
     if (!pageStr || pageStr === "undefined") {
